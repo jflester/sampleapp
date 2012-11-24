@@ -3,17 +3,24 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new micropost..." %>
   </div>
-  
   <div id="counter" class="counter">
+  140
+  </div>
+  <script>
     $(document).ready(function() {
       $("#micropost_content").keyup(function() {
         var counter = $("#counter");
         var charsRemaining = 140 - $(this).val().length;
         counter.text(charsRemaining);
-        counter.css('color', (charsRemaining < 0) ? 'red' : 'black');
+        counter.css('color', (charsRemaining <= 0) ? 'red' : 'black');
+		if (charsRemaining <= 0) {
+		  $("input[type=submit]").hide();
+		} else {
+		  $("input[type=submit]").show();
+		}
       });
     });
-  </div>
+  </script>
 
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
