@@ -13,7 +13,7 @@
         var charsRemaining = 140 - $(this).val().length;
         counter.text(charsRemaining);
         counter.css('color', (charsRemaining <= 0) ? 'red' : 'black');
-		if (charsRemaining <= 0) {
+		if (charsRemaining < 0) {
 		  $("input[type=submit]").hide();
 		} else {
 		  $("input[type=submit]").show();
